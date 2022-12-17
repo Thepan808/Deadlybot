@@ -1,6 +1,6 @@
 # © deadly
 
-from deadly.core.classes.classmanager import ClassManager
+from deadly.core.classmanager import ClassManager
 
 
 
