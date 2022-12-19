@@ -4,8 +4,7 @@ This file creates Assistant's client.
 from pyrogram import Client
 from pyrogram.errors import FloodWait
 from deadly.core import Core
-import config
-
+from config import Config as config
 
 
 
