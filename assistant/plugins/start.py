@@ -1,6 +1,6 @@
 import time
 
-from main.userbot.client import app
+from deadly.client.userbot import app
 
 from pyrogram import filters
 from pyrogram.types import Message
