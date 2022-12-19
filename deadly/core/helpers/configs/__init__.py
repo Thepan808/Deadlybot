@@ -32,7 +32,6 @@ class Configs(
     PmpermitConfig,
     UserConfig,
     AfkConfig,
-    HerokuConfig,
-    VcBotConfig
+    HerokuConfig    
     ):
     DVLIST = BOTDV + OTHERDV + USERDV + PMPERMITDV + AFKDV + HEROKUDV 
