@@ -96,7 +96,7 @@ async def start_bot():
     app.import_module("assistant/inlinequeries/", display_module=False)
     print(f"\n\n{botplugins} plugins Loaded Successfully\n\n")
     print("MODULES: Installing..\n\n")
-    plugins = app.import_module("userbot/plugins/", exclude=app.NoLoad())
+    plugins = app.import_module("userbot/", exclude=app.NoLoad())
     print(f"\n\n{plugins} modules Loaded Successfully\n\n")
     await start_assistant()
     await start_userbot()
