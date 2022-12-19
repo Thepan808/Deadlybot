@@ -6,8 +6,7 @@ from pyrogram import Client
 from deadly.client.bot import Bot
 from deadly.core import Core
 from deadly.core.fastpyro.dispatcher import Dispatcher
-
-
+import config
 
 # temp -
 random_name =  "".join(random.choices(string.ascii_uppercase + string.digits, k = 7))
@@ -18,9 +17,9 @@ class SuperClient(Core, Client):
     def __init__(self):
         super().__init__(
             name=random_name,
-            api_id=self.API_ID,
-            api_hash=self.API_HASH,
-            session_string=self.SESSION,
+            api_id=config.API_ID,
+            api_hash=config.API_HASH,
+            session_string=str(config.SESSION),
             workers=self.WORKERS,
         )
         self.start()
