@@ -7,9 +7,9 @@ from requests.exceptions import ConnectionError
 from config import Config
 from telegraph import Telegraph
 from pyrogram import __version__ as pyrogram_version
-from deadly.core.database import Database
+from deadly.database import Database
 from deadly.core.helpers import Helpers
-from deadly.core.newpyrogram import Methods
+from deadly.core.fastpyro import Methods
 
 
 
