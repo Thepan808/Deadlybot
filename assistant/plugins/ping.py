@@ -2,7 +2,7 @@ from datetime import datetime
 
 from pyrogram import filters
 from pyrogram.types import Message
-from deadly.client.userbot import app
+from deadly.client import app
 
 
 
