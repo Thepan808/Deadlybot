@@ -5,7 +5,7 @@ import string
 from pyrogram import Client
 from deadly.client.bot import Bot
 from deadly.core import Core
-from deadly.core.newpyrogram.dispatcher import Dispatcher
+from deadly.core.fastpyro.dispatcher import Dispatcher
 
 
 
