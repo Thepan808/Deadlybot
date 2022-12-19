@@ -10,7 +10,7 @@ from io import StringIO
 from pyrogram.types import Message
 from pyrogram import filters
 
-from deadly.client.userbot import app
+from deadly.client import app
 
 
 
