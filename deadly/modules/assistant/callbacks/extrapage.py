@@ -10,7 +10,7 @@ from pyrogram.types import (
 	CallbackQuery,
 )
 
-from main.userbot.client import app
+from deadly.client import app
 
 
 
