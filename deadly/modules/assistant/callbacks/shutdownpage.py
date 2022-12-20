@@ -18,7 +18,7 @@ from deadly.client import app
 
 @app.bot.on_callback_query(filters.regex("shutdown-tab"))
 @app.alert_user
-async def _shutdown_tron(_, cb: CallbackQuery):
+async def _shutdown_deadly(_, cb: CallbackQuery):
     await cb.edit_message_text(
         text=app.shutdown_tab_string("`Press confirm to shutdown userbot.`"),
         reply_markup=InlineKeyboardMarkup(
