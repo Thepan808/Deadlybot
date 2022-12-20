@@ -40,7 +40,14 @@ if [ "$uname" == "localhost" ]; then
     # install python3 pip
     if ! installed pip; then
        echo -e "${G}Installing python3 pip . . .\n"
-       apt install pip3
+       apt install pip
+       clear
+    fi
+    
+    # installing all requirements
+    if ! installed pip; then
+       echo -e "${G}Installing requirements. . . \n"
+       pip3 install -r requirements.txt
        clear
     fi
 
