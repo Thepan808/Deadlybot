@@ -9,7 +9,8 @@ from pyrogram.types import (
     InlineKeyboardMarkup,
     CallbackQuery,
 )
-from main.userbot.client import app
+from deadly.client import app
+
 
 
 
