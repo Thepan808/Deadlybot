@@ -9,7 +9,7 @@ from pyrogram import filters
 from pyrogram.types import CallbackQuery
 from pyrogram.errors import PeerIdInvalid
 
-from main.userbot.client import app
+from deadly.client import app
 
 
 
