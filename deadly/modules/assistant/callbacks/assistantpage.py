@@ -10,7 +10,8 @@ from pyrogram.types import (
 	CallbackQuery
 )
 
-from main.userbot.client import app
+from deadly.client import app
+
 
 
 
@@ -21,7 +22,7 @@ from main.userbot.client import app
 async def _assistant(_, cb: CallbackQuery):
     await cb.edit_message_media(
         media=InputMediaPhoto(
-            media="main/core/resources/images/nora.png", 
+            media="assets/images/Laky.jpg", 
             caption=app.assistant_tab_string()
         ),
         reply_markup=InlineKeyboardMarkup(
