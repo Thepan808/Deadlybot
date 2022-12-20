@@ -34,7 +34,7 @@ class MSGID(BASE):
 
     def __init__(self, user_id, msg_id):
         self.user_id = user_id
-        self.msg_id = msg_id
+        self.msg_id = str(msg_id) 
 
 
 
@@ -48,7 +48,7 @@ class DISAPPROVE(BASE):
 
     def __init__(self, user_id, warn_count):
         self.user_id = user_id
-        self.warn_count = warn_count
+        self.warn_count = str(warn_count) 
 
 
 
