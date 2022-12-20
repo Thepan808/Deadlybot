@@ -3,7 +3,7 @@ import threading
 from sqlalchemy import (
     Column, 
     String, 
-    Integer
+    BigInteger
 )
 
 from . import SESSION, BASE
@@ -15,7 +15,7 @@ from . import SESSION, BASE
 class PMTABLE(BASE):
     __tablename__ = "approve"
 
-    user_id = Column(Integer, primary_key=True)
+    user_id = Column(BigInteger, primary_key=True)
     boolvalue = Column(String)
 
     def __init__(self, user_id, boolvalue):
@@ -29,8 +29,8 @@ class PMTABLE(BASE):
 class MSGID(BASE):
     __tablename__ = "pm msg id"
 
-    user_id = Column(Integer, primary_key=True)
-    msg_id = Column(Integer)
+    user_id = Column(BigInteger, primary_key=True)
+    msg_id = Column(BigInteger)
 
     def __init__(self, user_id, msg_id):
         self.user_id = user_id
@@ -43,8 +43,8 @@ class MSGID(BASE):
 class DISAPPROVE(BASE):
     __tablename__ = "disapprove"
 
-    user_id = Column(Integer, primary_key=True)
-    warn_count = Column(Integer)
+    user_id = Column(BigInteger, primary_key=True)
+    warn_count = Column(BigInteger)
 
     def __init__(self, user_id, warn_count):
         self.user_id = user_id
