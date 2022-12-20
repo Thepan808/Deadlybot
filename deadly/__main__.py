@@ -93,7 +93,7 @@ async def start_bot():
     print("PLUGINS: Installing..\n\n")
     botplugins = app.import_module("deadly/modules/assistant/plugins/", exclude=app.NoLoad())
     app.import_module("deadly/modules/assistant/callbacks/", display_module=False)
-    app.import_module("deadly/modules/assistant/inlinequeries/", display_module=False)
+    app.import_module("deadly/modules/assistant/Inlinequeries/", display_module=False)
     print(f"\n\n{botplugins} plugins Loaded Successfully\n\n")
     print("MODULES: Installing..\n\n")
     plugins = app.import_module("deadly/modules/userbot/", exclude=app.NoLoad())
