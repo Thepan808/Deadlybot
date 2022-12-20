@@ -1,58 +1,44 @@
-
-
 import threading
 
-from sqlalchemy import (
-    Column, 
-    String, 
-    BigInteger
-)
+from sqlalchemy import Column, Integer, String
 
-from . import SESSION, BASE
-
-
+from . import BASE, SESSION
 
 
 # save user ids in whitelists
 class PMTABLE(BASE):
     __tablename__ = "approve"
 
-    user_id = Column(BigInteger, primary_key=True)
-    username = Column(String)
+    user_id = Column(Integer, primary_key=True)
+    boolvalue = Column(String)
 
-    def __init__(self, user_id, username):
+    def __init__(self, user_id, boolvalue):
         self.user_id = user_id
-        self.username = str(username) 
-
-
+        self.boolvalue = boolvalue
 
 
 # save warn msg ids
 class MSGID(BASE):
     __tablename__ = "pm msg id"
 
-    user_id = Column(BigInteger, primary_key=True)
-    msg_id = Column(BigInteger)
+    user_id = Column(Integer, primary_key=True)
+    msg_id = Column(Integer)
 
     def __init__(self, user_id, msg_id):
         self.user_id = user_id
         self.msg_id = msg_id
 
 
-
-
 # save warn counts
 class DISAPPROVE(BASE):
     __tablename__ = "disapprove"
 
-    user_id = Column(BigInteger, primary_key=True)
-    warn_count = Column(String)
+    user_id = Column(Integer, primary_key=True)
+    warn_count = Column(Integer)
 
     def __init__(self, user_id, warn_count):
         self.user_id = user_id
-        self.warn_count = str(warn_count) 
-
-
+        self.warn_count = warn_count
 
 
 PMTABLE.__table__.create(checkfirst=True)
@@ -60,8 +46,6 @@ MSGID.__table__.create(checkfirst=True)
 DISAPPROVE.__table__.create(checkfirst=True)
 
 INSERTION_LOCK = threading.RLock()
-
-
 
 
 class PMPERMITSQL(object):
@@ -90,22 +74,20 @@ class PMPERMITSQL(object):
         finally:
             SESSION.close()
 
-
-    # add user id to whitelist 
-    def set_whitelist(self, user_id, username):
+    # add user id to whitelist
+    def set_whitelist(self, user_id, boolvalue):
         with INSERTION_LOCK:
             user = SESSION.query(PMTABLE).get(user_id)
             try:
                 if not user:
-                    user = PMTABLE(user_id, username)
+                    user = PMTABLE(user_id, boolvalue)
                 else:
-                    user.username = str(username)
+                    user.boolvalue = str(boolvalue)
                 SESSION.add(user)
                 SESSION.commit()
             finally:
                 SESSION.close()
         return user_id
-
 
     # remove user id from whitelist
     def del_whitelist(self, user_id):
@@ -119,16 +101,14 @@ class PMPERMITSQL(object):
                 SESSION.close()
             return False
 
-
     # get whitelist (approved)
     def get_whitelist(self, user_id):
         user = SESSION.query(PMTABLE).get(user_id)
         rep = ""
         if user:
-            rep = user.username
+            rep = str(user.boolvalue)
         SESSION.close()
         return rep
-
 
     # warn table func
     def set_warn(self, user_id, warn_count):
@@ -144,16 +124,14 @@ class PMPERMITSQL(object):
             finally:
                 SESSION.close()
 
-
     # get warn func
     def get_warn(self, user_id):
         user = SESSION.query(DISAPPROVE).get(user_id)
         rep = ""
         if user:
-            rep = user.warn_count
+            rep = str(user.warn_count)
         SESSION.close()
         return rep
-
 
     # del warn func
     def del_warn(self, user_id):
