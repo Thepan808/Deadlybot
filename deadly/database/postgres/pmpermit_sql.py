@@ -1,92 +1,167 @@
 
 import threading
 
-from sqlalchemy import Column, String
+from sqlalchemy import (
+    Column, 
+    String, 
+    BigInteger
+)
 
-from .import BASE, SESSION
-
-# class set_req
-# class get_req
-
-
-class WhitelistUsers(BASE):
-    __tablename__ = "pmapprove"
-    user_id = Column(String(14), primary_key=True)
-    username = Column(String(15))
-
-    def __init__(self, user_id, username):
-        self.user_id = user_id
-        self.username = username
+from . import SESSION, BASE
 
 
-class ReqUsers(BASE):
-    __tablename__ = "getpmapprove"
-    user_id = Column(String(14), primary_key=True)
-    username = Column(String(15))
+
+
+# save user ids in whitelists
+class PMTABLE(BASE):
+    __tablename__ = "approve"
+
+    user_id = Column(BigInteger, primary_key=True)
+    username = Column(String)
 
     def __init__(self, user_id, username):
         self.user_id = user_id
-        self.username = username
+        self.username = str(username) 
 
 
-ReqUsers.__table__.create(checkfirst=True)
 
-WhitelistUsers.__table__.create(checkfirst=True)
+
+# save warn msg ids
+class MSGID(BASE):
+    __tablename__ = "pm msg id"
+
+    user_id = Column(BigInteger, primary_key=True)
+    msg_id = Column(String)
+
+    def __init__(self, user_id, msg_id):
+        self.user_id = user_id
+        self.msg_id = str(msg_id) 
+
+
+
+
+# save warn counts
+class DISAPPROVE(BASE):
+    __tablename__ = "disapprove"
+
+    user_id = Column(BigInteger, primary_key=True)
+    warn_count = Column(String)
+
+    def __init__(self, user_id, warn_count):
+        self.user_id = user_id
+        self.warn_count = str(warn_count) 
+
+
+
+
+PMTABLE.__table__.create(checkfirst=True)
+MSGID.__table__.create(checkfirst=True)
+DISAPPROVE.__table__.create(checkfirst=True)
 
 INSERTION_LOCK = threading.RLock()
 
 
-def set_whitelist(user_id, username):
-    with INSERTION_LOCK:
-        user = SESSION.query(WhitelistUsers).get(str(user_id))
-        if not user:
-            user = WhitelistUsers(str(user_id), str(username))
-        else:
-            user.username = str(username)
-
-        SESSION.add(user)
-        SESSION.commit()
 
 
-def del_whitelist(user_id):
+class PMPERMITSQL(object):
+    # add message id of a user
+    def set_msgid(self, user_id, msg_id):
+        with INSERTION_LOCK:
+            try:
+                user = SESSION.query(MSGID).get(user_id)
+                if not user:
+                    user = MSGID(user_id, msg_id)
+                else:
+                    user.msg_id = msg_id
+                SESSION.merge(user)
+                SESSION.commit()
+            finally:
+                SESSION.close()
 
-    with INSERTION_LOCK:
-        user = SESSION.query(WhitelistUsers).get(str(user_id))
-        if user:
-            SESSION.delete(user)
-            SESSION.commit()
-        else:
+    # get warn message id
+    def get_msgid(self, user_id):
+        try:
+            user = SESSION.query(MSGID).get(user_id)
+            msg_id = None
+            if user:
+                msg_id = user.msg_id
+                return msg_id
+        finally:
             SESSION.close()
+
+
+    # add user id to whitelist 
+    def set_whitelist(self, user_id, username):
+        with INSERTION_LOCK:
+            user = SESSION.query(PMTABLE).get(user_id)
+            try:
+                if not user:
+                    user = PMTABLE(user_id, username)
+                else:
+                    user.username = str(username)
+                SESSION.add(user)
+                SESSION.commit()
+            finally:
+                SESSION.close()
+        return user_id
+
+
+    # remove user id from whitelist
+    def del_whitelist(self, user_id):
+        with INSERTION_LOCK:
+            user = SESSION.query(PMTABLE).get(user_id)
+            try:
+                if user:
+                    SESSION.delete(user)
+                    SESSION.commit()
+            finally:
+                SESSION.close()
             return False
 
 
-def get_whitelist(user_id):
-    user = SESSION.query(WhitelistUsers).get(str(user_id))
-    rep = ""
-    if user:
-        rep = str(user.username)
-
-    SESSION.close()
-    return rep
-
-
-def set_req(user_id, username):
-    with INSERTION_LOCK:
-        user = SESSION.query(ReqUsers).get(str(user_id))
-        if not user:
-            user = ReqUsers(str(user_id), str(username))
-        else:
-            user.username = str(username)
-
-        SESSION.add(user)
-        SESSION.commit()
+    # get whitelist (approved)
+    def get_whitelist(self, user_id):
+        user = SESSION.query(PMTABLE).get(user_id)
+        rep = ""
+        if user:
+            rep = str(user.username)
+        SESSION.close()
+        return rep
 
 
-def get_req(user_id):
-    user = SESSION.query(ReqUsers).get(str(user_id))
-    rep = ""
-    if user:
-        rep = str(user.username)
+    # warn table func
+    def set_warn(self, user_id, warn_count):
+        with INSERTION_LOCK:
+            try:
+                user = SESSION.query(DISAPPROVE).get(user_id)
+                if not user:
+                    user = DISAPPROVE(user_id, warn_count)
+                else:
+                    user.warn_count = warn_count
+                SESSION.merge(user)
+                SESSION.commit()
+            finally:
+                SESSION.close()
 
-    SESSION.close()
-    return rep
+
+    # get warn func
+    def get_warn(self, user_id):
+        user = SESSION.query(DISAPPROVE).get(user_id)
+        rep = ""
+        if user:
+            rep = str(user.warn_count)
+        SESSION.close()
+        return rep
+
+
+    # del warn func
+    def del_warn(self, user_id):
+        with INSERTION_LOCK:
+            user = SESSION.query(DISAPPROVE).get(user_id)
+            try:
+                if user:
+                    SESSION.delete(user)
+                    SESSION.commit()
+            finally:
+                SESSION.close()
+            return False
