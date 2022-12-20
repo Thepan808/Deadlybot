@@ -11,7 +11,8 @@ from pyrogram.types import (
     CallbackQuery
 )
 
-from main.userbot.client import app
+from deadly.client import app
+
 
 
 
@@ -22,7 +23,7 @@ from main.userbot.client import app
 async def _close(_, cb: CallbackQuery):
     await cb.edit_message_media(
         media=InputMediaPhoto(
-            media="main/core/resources/images/tron-vertical.png", 
+            media="assets/images/DeadlyUserbot.jpg", 
             caption=app.close_tab_string()
         ),
         reply_markup=InlineKeyboardMarkup(
