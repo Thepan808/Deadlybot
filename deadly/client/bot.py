@@ -4,7 +4,6 @@ This file creates Assistant's client.
 from pyrogram import Client
 from pyrogram.errors import FloodWait
 from deadly.core import Core
-from config import Config as config
 
 
 
@@ -14,9 +13,9 @@ class Bot(Core, Client):
     def __init__(self):
         super().__init__(
             name="Nora",
-            api_id=config.API_ID,
-            api_hash=config.API_HASH,
-            bot_token=config.BOT_TOKEN
+            api_id=self.API_ID,
+            api_hash=self.API_HASH,
+            bot_token=self.BOT_TOKEN
 	)
         try:
             self.start()
