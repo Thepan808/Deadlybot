@@ -31,11 +31,11 @@ class MSGID(BASE):
     __tablename__ = "pm msg id"
 
     user_id = Column(BigInteger, primary_key=True)
-    msg_id = Column(String)
+    msg_id = Column(BigInteger)
 
     def __init__(self, user_id, msg_id):
         self.user_id = user_id
-        self.msg_id = str(msg_id) 
+        self.msg_id = msg_id
 
 
 
@@ -124,7 +124,7 @@ class PMPERMITSQL(object):
         user = SESSION.query(PMTABLE).get(user_id)
         rep = ""
         if user:
-            rep = str(user.username)
+            rep = user.username
         SESSION.close()
         return rep
 
@@ -149,7 +149,7 @@ class PMPERMITSQL(object):
         user = SESSION.query(DISAPPROVE).get(user_id)
         rep = ""
         if user:
-            rep = str(user.warn_count)
+            rep = user.warn_count
         SESSION.close()
         return rep
 
