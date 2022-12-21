@@ -194,5 +194,4 @@ async def disapprovepm(client: Client, message: Message):
     await message.edit(
         f"**Message** [{name0}](tg://user?id={uid}) **Rejected, Please Don't Spam Chat!**"
     )
-    except Exception as e:
-        await app.error(e)
+    
