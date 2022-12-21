@@ -108,7 +108,7 @@ async def offlinemention_handler(_, m: Message):
                     f"Sorry {app.UserMention()} is currently offline !\n**Time:** {otime}",
                     reply_to_message_id=m.id
                     )
-                await app.delete_message(3)
+                await app.delete_message()
 
             text = m.text if m.text else ""
             cid = m.chat.id if m.chat and m.chat.id else 0
