@@ -23,19 +23,17 @@ async def _start(_, cb: CallbackQuery):
         media=InputMediaPhoto(media=app.BotPic(), caption=app.home_tab_string()),
         reply_markup=InlineKeyboardMarkup([
                 app.BuildKeyboard(
-                    (
-                        ["• Settings •", "settings-tab"],
-                        ["• Plugins •", "plugins-tab"]
-                    )
-                ),
+                            (                                
+                                ["๏ Plugins ๏", "plugins-tab"]
+                            )
+                        ),
                 app.BuildKeyboard(
-                    (
-                        ["• Extra •", "extra-tab"],
-                        ["• Stats •", "stats-tab"]
-                    )
-                ),
-                app.BuildKeyboard(([["About", "about-tab"]])),
-                app.BuildKeyboard(([["Close", "close-tab"]]))
+                            (
+                                ["๏ Assistant ๏", "assistant-tab"], 
+                                [f"๏ Stats ๏", "stats-tab"]
+                            )
+                        ),                       
+                app.BuildKeyboard(([["Close🗑", "close-tab"]]))
         ]
         ),
     )
