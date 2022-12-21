@@ -101,7 +101,7 @@ async def offlinemention_handler(_, m: Message):
                     f"Sorry {app.UserMention()} is currently offline !\n**Time:** {otime}\n**Because:** {get['reason']}",
                     reply_to_message_id=m.id
                     )
-                await app.delete_message(3)
+                await app.delete_message()
             elif get["afktime"] and not get["reason"]:
                 await app.send_message(
                     m.chat.id,
