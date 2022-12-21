@@ -69,18 +69,16 @@ async def inline_result(_, inline_query):
                 reply_markup=InlineKeyboardMarkup(
                     [
                         app.BuildKeyboard(
-                            (
-                                [f"๏ Settings ๏", "settings-tab"],
-                                [f"๏ Plugins ๏", "plugins-tab"]
+                            (                                
+                                ["๏ Plugins ๏", "plugins-tab"]
                             )
                         ),
                         app.BuildKeyboard(
                             (
-                                [f"๏ Extra ๏", "extra-tab"],
+                                ["๏ Assistant ๏", "assistant-tab"], 
                                 [f"๏ Stats ๏", "stats-tab"]
                             )
-                        ),
-                        app.BuildKeyboard(([["๏ Assistant ๏", "assistant-tab"]])),
+                        ),                       
                         app.BuildKeyboard(([["Close🗑", "close-tab"]]))
                     ]
                 )
