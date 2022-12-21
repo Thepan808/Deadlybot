@@ -30,14 +30,8 @@ async def _close(_, cb: CallbackQuery):
             [
                 [
                     InlineKeyboardButton(
-                        text="Open",
+                        text="๏ Open-Again ๏",
                         callback_data="home-tab"
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                        text="Delete",
-                        callback_data="delete-tab"
                     )
                 ]
             ]
