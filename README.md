@@ -10,7 +10,7 @@
 <img src="https://te.legra.ph/file/5794f1af1795c981cb2b6.jpg" alt="DEADLY USERBOT">
 
 
-## For any query or want to know how it works join our Channel and Support Group 
+### For any query or want to know how it works join our Channel and Support Group 
 
 <a href="https://t.me/TheBotUpdates"><img src="https://img.shields.io/badge/Join-Telegram%20Channel-red.svg?logo=Telegram"></a>
 <a href="https://t.me/TheDeadlyBots"><img src="https://img.shields.io/badge/Join-Telegram%20Group-blue.svg?logo=telegram"></a>
