@@ -30,3 +30,6 @@ async def create_keyboard(_, m):
     else:
         await app.send_edit(
             m, f"`{app.PREFIX}kbd [ Button text ] [ Button url ] [ Text ]`"
+        ) 
+    except Exception as e:
+        await app.error(e)
