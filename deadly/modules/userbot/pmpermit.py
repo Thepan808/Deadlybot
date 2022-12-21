@@ -87,16 +87,6 @@ async def auto_accept(client, message):
     except BaseException:
         pass
 
-    if message.chat.id in BLAZE:
-        try:
-            approve(message.chat.id)
-            await client.send_message(
-                message.chat.id,
-                f"<b>Receiving Messages!!!</b>\n{message.from_user.mention} <b>DeadlyUserbot Developer detected </b>",
-                parse_mode=enums.ParseMode.HTML,
-            )
-        except IntegrityError:
-            pass
     if message.chat.id not in [client.me.id, 777000]:
         if is_approved(message.chat.id):
             return True
