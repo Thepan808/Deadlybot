@@ -26,7 +26,7 @@ app.CMD_HELP.update(
 @app.on_message(gen(["hack", "heck"]))
 async def heck_dat(_, message: Message):
     r_msg = message.reply_to_message
-    heck_msg = await app.reply_text("**[root@deadlyuserbot]** `enable tg-hacker && clear`")
+    heck_msg = await app.reply("**[root@deadlyuserbot]** `enable tg-hacker && clear`")
     if not r_msg:
         return await heck_msg.edit("`⚠ Reply to a telegram user to perform a hack!`")
     if not r_msg.from_user:
