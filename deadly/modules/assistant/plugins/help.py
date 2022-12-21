@@ -14,11 +14,9 @@ from deadly.client import app
 
 emoji = app.HelpEmoji() or "•"
 
-settings = app.BuildKeyboard(([f"{emoji} Settings {emoji}", "settings-tab"], [f"{emoji} Modules {emoji}", "plugins-tab"]))
-extra = app.BuildKeyboard(([f"{emoji} Extra {emoji}", "extra-tab"], [f"{emoji} Stats {emoji}", "stats-tab"]))
-about = app.BuildKeyboard(([["Assistant", "assistant-tab"]]))
-close = app.BuildKeyboard(([["Close", "close-tab"]]))
-public = app.BuildKeyboard(([[f"{emoji} Public Commands {emoji}", "public-commands-tab"]]))
+settings = app.BuildKeyboard(([[f"๏ Modules ๏", "plugins-tab"]]))
+extra = app.BuildKeyboard(([["๏ Assistant ๏", "assistant-tab"], [f"๏ Stats ๏", "stats-tab"]))
+close = app.BuildKeyboard(([["Close🗑", "close-tab"]]))
 
 
 
@@ -31,7 +29,7 @@ async def start(_, m: Message):
         if m.from_user.id == app.id:
             # bot pic
             buttons=InlineKeyboardMarkup(
-                [ settings, extra, about, close ]
+                [ settings, extra, close ]
             )
             botpic = app.BotPic().split(".")[-1] # extension of media
             if botpic in ("jpg", "png", "jpeg"):
@@ -60,8 +58,5 @@ async def start(_, m: Message):
                 m.chat.id,
                 "assets/images/DeadlyUserbot.jpg",
                 f"Hey {m.from_user.mention} You are eligible to use me. There are some commands you can use, check below.",
-                reply_markup=InlineKeyboardMarkup(
-                    [public]
-                ),
             )
         app.message_ids.update({info.chat.id : info.id})
