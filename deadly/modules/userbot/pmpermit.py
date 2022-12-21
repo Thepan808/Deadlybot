@@ -23,6 +23,16 @@ DEF_UNAPPROVED_MSG = (
     "╚════════════════════╝\n"
 )
 
+app.CMD_HELP.update(
+    {"pmpermit" : (
+        "pmpermit",
+        {
+        "approve" : "reply to user to approve them in pm.",
+        "disapprove" : "reply to user to disapprove them in pm."
+        }
+        )
+    }
+)
 
 @app.on_message(
     ~filters.me & filters.private & ~filters.bot & filters.incoming, group=69
