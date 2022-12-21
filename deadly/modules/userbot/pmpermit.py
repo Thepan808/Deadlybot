@@ -13,7 +13,7 @@ from pyrogram.types import Message
 from sqlalchemy.exc import IntegrityError
 
 
-from deadly import TEMP_SETTINGS
+from deadly import TEMP_SETTINGS, app, gen
 from deadly.core.basic import edit_or_reply
 from deadly.core.tools import get_arg
 
