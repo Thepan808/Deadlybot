@@ -8,8 +8,7 @@ from .postgres.welcome_sql import WELCOMESQL
 
 class Database(
     AFKSQL,
-    NOTESSQL,
-    PMPermit,
+    NOTESSQL,    
     DVSQL,
     WELCOMESQL
     ):
