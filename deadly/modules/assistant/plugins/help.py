@@ -15,7 +15,7 @@ from deadly.client import app
 emoji = app.HelpEmoji() or "•"
 
 settings = app.BuildKeyboard(([[f"๏ Modules ๏", "plugins-tab"]]))
-extra = app.BuildKeyboard(([["๏ Assistant ๏", "assistant-tab"], [f"๏ Stats ๏", "stats-tab"]))
+extra = app.BuildKeyboard(([["๏ Assistant ๏", "assistant-tab"], [f"๏ Stats ๏", "stats-tab"]]))
 close = app.BuildKeyboard(([["Close🗑", "close-tab"]]))
 
 
