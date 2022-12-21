@@ -22,15 +22,15 @@ from deadly.client import app
 async def _assistant(_, cb: CallbackQuery):
     await cb.edit_message_media(
         media=InputMediaPhoto(
-            media="assets/images/Laky.jpg", 
+            media="assets/images/DeadlyUserbot.jpg", 
             caption=app.assistant_tab_string()
         ),
         reply_markup=InlineKeyboardMarkup(
             [
                 app.bot.BuildKeyboard(
                     (
-                        ["Home", "close-tab"],
-                        ["Back", "home-tab"]
+                        ["๏ Home ๏", "close-tab"],
+                        ["๏ Back ๏", "home-tab"]
                     )
                 )
             ]
