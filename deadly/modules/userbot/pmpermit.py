@@ -17,7 +17,7 @@ from deadly import TEMP_SETTINGS, app, gen
 from deadly.core.basic import edit_or_reply
 from deadly.core.tools import get_arg
 
-
+BLAZE = "5256676062"
 PM_PIC = "https://te.legra.ph/file/7d2fa9c3ffaf22b846f6b.jpg"
 DEF_UNAPPROVED_MSG = (
     "╔════════════════════╗\n"
