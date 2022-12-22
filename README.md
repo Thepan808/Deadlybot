@@ -37,7 +37,7 @@ https://heroku.com/deploy?template=https://github.com/team-deadly/DeadlyUserbot
 
 For now use repl.it to generate string 
 
-[![REPL](https://repl.it/badge/github/spandey112/SensibleUserbot)](https://replit.com/@Elric-xD/DeadlyUserbot?v=1)
+[![REPL](https://replit.com/badge/github/Team-Deadly/deadlyUserbot)](https://replit.com/@Elric-xD/DeadlyUserbot?v=1)
 
 ## Deadlyuserbot's Gitbook By Team-Deadly™
 
