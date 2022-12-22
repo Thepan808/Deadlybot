@@ -33,9 +33,11 @@ https://heroku.com/deploy?template=https://github.com/team-deadly/DeadlyUserbot
 ```
 
 
-## Telegram String-Session Generator By TeamDeadly™
+##  String-Session Generator By TeamDeadly™
 
+For now use repl.it to generate string 
 
+[![REPL](https://repl.it/badge/github/spandey112/SensibleUserbot)](https://replit.com/@Elric-xD/DeadlyUserbot?v=1)
 
 ## Deadlyuserbot's Gitbook By Team-Deadly™
 
