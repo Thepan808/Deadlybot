@@ -33,18 +33,17 @@ async def stats(client, message):
         bot = 0
         user = 0
         group = 0
-        channel = 0
-        admin = 0
+        channel = 0        
         supergroup = 0
         stats_format = """
-`Your Stats Obtained in {} seconds`\n\n
-`You have {} Private Messages.`\n
-`You are in {} Groups.`\n
-`You are in {} Super Groups.`\n
-`You Are in {} Channels.`\n
-`You Are Admin in {} Chats.`\n
-`Bots = {}`\n\n
-Powered by @DeadlyUserbot
+• **𝗦𝗧𝗔𝗧𝗦 𝗙𝗢𝗥:** {}\n\n
+𝗬𝗼𝘂𝗿 𝗦𝘁𝗮𝘁𝘀 𝗢𝗯𝘁𝗮𝗶𝗻𝗲𝗱 𝗶𝗻 {} 𝘀𝗲𝗰𝗼𝗻𝗱𝘀\n\n
+𝗬𝗼𝘂  𝗵𝗮𝘃𝗲 {} 𝗣𝗿𝗶𝘃𝗮𝘁𝗲 𝗠𝗲𝘀𝘀𝗮𝗴𝗲𝘀.\n
+𝗬𝗼𝘂 𝗮𝗿𝗲 𝗶𝗻 {} 𝗚𝗿𝗼𝘂𝗽𝘀.\n
+𝗬𝗼𝘂 𝗮𝗿𝗲 𝗶𝗻 {} 𝗦𝘂𝗽𝗲𝗿 𝗚𝗿𝗼𝘂𝗽𝘀.\n
+𝗬𝗼𝘂 𝗔𝗿𝗲 𝗶𝗻 {} 𝗖𝗵𝗮𝗻𝗻𝗲𝗹𝘀.\n
+𝗕𝗼𝘁𝘀 = {}\n\n
+𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆: @DeadlyUserbot
 """
 
         async for dialog in client.get_dialogs():
@@ -55,14 +54,11 @@ Powered by @DeadlyUserbot
             if dialog.chat.type == ChatType.GROUP:
                 group += 1
             if dialog.chat.type  == ChatType.SUPERGROUP:
-                supergroup += 1
-                user_s = await dialog.chat.get_member(int(client.me.id))
-                if user_s.status in ("creator", "administrator"):
-                    admin += 1
+                supergroup += 1                
             if dialog.chat.type == ChatType.PRIVATE:
                 user += 1
         end = datetime.now()
         ms = (end - start).seconds     
-        await app.send_edit(stats_format.format(ms, user, group, supergroup, channel, admin, bot))
+        await app.send_edit(stats_format.format(app.UserMention(), ms, user, group, supergroup, channel, bot))
     except Exception as e:
         await app.error(e)
