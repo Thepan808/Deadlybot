@@ -578,7 +578,7 @@ class AsyncPart(object):
 
             await self.send_edit("Sending Bot username. . . ", text_type=["mono"])
             await self.send_message(botname, f"{self.bot.username}") # BotFather (93372553)
-
+            await self.send_message(botname, "reply with valid plugin name")
             await self.send_edit("Inline Turned On Successfully. . . ", text_type=["mono"])
         except YouBlockedUser:
             await self.send_edit("@Botfather is blocked by you unblock it first") # unblock & continue
