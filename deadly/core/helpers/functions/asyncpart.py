@@ -572,52 +572,17 @@ class AsyncPart(object):
         try:
             botname = "BotFather"
             await self.send_edit("Processing command . . .", text_type=["mono"])
-            await self.send_message(botname, "/mybots") # BotFather (93372553)
+            await self.send_message(botname, "/setinline") # BotFather (93372553)
             await asyncio.sleep(0.50) # floodwaits
 
-            data = await self.get_last_msg(botname)
-            usernames = list(data[0].reply_markup.inline_keyboard)[0]
 
-            unames = []
-            unames.clear()
+            await self.send_edit("Sending Bot username. . . ", text_type=["mono"])
+            await self.send_message(botname, f"{self.bot.username}") # BotFather (93372553)
 
-            for x in usernames:
-                unames.append(x.text)
-
-            await self.send_edit("Choosing bot . . . ", text_type=["mono"])
-
-            if self.bot.username in unames:
-                await data[0].click(self.bot.username)
-            else:
-                return await self.send_edit("Looks like you don't have a bot please, use your own bot.", text_type=["mono"], delme=4)
-
-            data = await self.get_last_msg(botname)
-
-            await self.send_edit("Pressing Bot Settings . . . ", text_type=["mono"])
-
-            await data[0].click("Bot Settings")
-
-            data = await self.get_last_msg(botname)
-
-            await self.send_edit("checking whether inline mode is On or Off . . . ", text_type=["mono"])
-
-            await data[0].click("Inline Mode")
-
-            data = await self.get_last_msg(botname)
-
-            # Turn on inline mode
-            if "Turn on" in str(data[0]):
-                await self.send_edit("Turning Inline mode on . . . ", text_type=["mono"])
-                await data[0].click("Turn on")
-                await self.send_edit("Inline mode is now turned On.", text_type=["mono"], delme=4)
-            # Turn inline mode off
-            elif "Turn inline mode off" in str(data[0]):
-                await self.send_edit("Turning Inline mode Off . . .", text_type=["mono"])
-                await data[0].click("Turn inline mode off")
-                await self.send_edit("Inline mode is now turned Off.", text_type=["mono"], delme=4)
+            await self.send_edit("Inline Turned On Successfully. . . ", text_type=["mono"])
         except YouBlockedUser:
-            await self.unblock_user(botname) # unblock & continue
-            await self.toggle_inline() # keep process going
+            await self.send_edit("@Botfather is blocked by you unblock it first") # unblock & continue
+            pass
         except Exception as err:
             await self.error(err)
 
