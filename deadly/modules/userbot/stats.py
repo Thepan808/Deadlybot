@@ -24,7 +24,7 @@ app.CMD_HELP.update(
 
 
 @app.on_message(gen("stats"))
-async def dialogstats_handler(_, m: Message):
+async def stats(client, message):
     """ dialogstats handler for stats plugin """
     try:
         start = datetime.now()
