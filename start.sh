@@ -4,7 +4,7 @@
 
 uname=$(uname -n)
 filename="./config.txt"
-repo="https://github.com/Elric-xD/project.git"
+repo="https://github.com/Team-Deadly/DeadlyUserbot.git"
 pytgcalls=$(pip3 show py-tgcalls)
 G='\033[0;32m'
 
