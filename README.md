@@ -15,7 +15,9 @@
 <a href="https://t.me/TheBotUpdates"><img src="https://img.shields.io/badge/Join-Telegram%20Channel-red.svg?logo=Telegram"></a>
 <a href="https://t.me/TheDeadlyBots"><img src="https://img.shields.io/badge/Join-Telegram%20Group-blue.svg?logo=telegram"></a>
 
-## ----------------- Don't Forget To Give A Star ⭐ -----------------
+ ----------------------
+ Don't Forget To Give A Star ⭐
+ -----------------------
 
 ## Deploy Deadlyuserbot To Heroku
 
