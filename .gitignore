@@ -1,0 +1,10 @@
+__pycache__
+*.session
+*.session-journal
+.Python
+.cache
+.vscode
+config.text
+temp.info
+downloads
+tron.db
