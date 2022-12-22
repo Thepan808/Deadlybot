@@ -47,7 +47,7 @@ async def stats(client, message):
 Powered by @DeadlyUserbot
 """
 
-        async for dialog in client.iter_dialogs():
+        async for dialog in client.get_dialogs():
             if dialog.chat.type == "channel":
                 channel += 1
             elif dialog.chat.type == "bot":
