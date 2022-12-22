@@ -48,18 +48,18 @@ Powered by @DeadlyUserbot
 """
 
         async for dialog in client.get_dialogs():
-            if dialog.chat.type == "channel":
+            if dialog.chat.type == ChatType.CHANNEL:
                 channel += 1
-            elif dialog.chat.type == "bot":
+            if dialog.chat.type == ChatType.BOT:
                 bot += 1
-            elif dialog.chat.type == "group":
+            if dialog.chat.type == ChatType.GROUP:
                 group += 1
-            elif dialog.chat.type == "supergroup":
+            if dialog.chat.type  == ChatType.SUPERGROUP
                 supergroup += 1
                 user_s = await dialog.chat.get_member(int(client.me.id))
                 if user_s.status in ("creator", "administrator"):
                     admin += 1
-            elif dialog.chat.type == "private":
+            if dialog.chat.type == ChatType.PRIVATE:
                 user += 1
         end = datetime.now()
         ms = (end - start).seconds     
