@@ -54,7 +54,7 @@ Powered by @DeadlyUserbot
                 bot += 1
             if dialog.chat.type == ChatType.GROUP:
                 group += 1
-            if dialog.chat.type  == ChatType.SUPERGROUP
+            if dialog.chat.type  == ChatType.SUPERGROUP:
                 supergroup += 1
                 user_s = await dialog.chat.get_member(int(client.me.id))
                 if user_s.status in ("creator", "administrator"):
