@@ -25,30 +25,42 @@ app.CMD_HELP.update(
 async def dialogstats_handler(_, m: Message):
     """ dialogstats handler for stats plugin """
     try:
+        start = datetime.now()
         await app.send_edit("Getting stats . . .", text_type=["mono"])
 
         bot = 0
         user = 0
         group = 0
         channel = 0
+        admin = 0
+        supergroup = 0
         stats_format = """
-        • **STATS FOR:** {}
-        🤖 • **BOTS:** {}
-        👨 • **USERS:** {}
-        🛡️ • **GROUPS:** {}
-        ⚙️ • **CHANNELS:** {}
-        """
+`Your Stats Obtained in {} seconds`\n\n
+`You have {} Private Messages.`\n
+`You are in {} Groups.`\n
+`You are in {} Super Groups.`\n
+`You Are in {} Channels.`\n
+`You Are Admin in {} Chats.`\n
+`Bots = {}`\n\n
+Powered by @DeadlyUserbot
+"""
 
-        async for x in app.get_dialogs():
-            if x.chat.type == ChatType.CHANNEL:
+        async for dialog in client.iter_dialogs():
+            if dialog.chat.type == "channel":
                 channel += 1
-            if x.chat.type == ChatType.BOT:
+            elif dialog.chat.type == "bot":
                 bot += 1
-            if x.chat.type in (ChatType.SUPERGROUP, ChatType.GROUP):
+            elif dialog.chat.type == "group":
                 group += 1
-            if x.chat.type == ChatType.PRIVATE:
+            elif dialog.chat.type == "supergroup":
+                supergroup += 1
+                user_s = await dialog.chat.get_member(int(client.me.id))
+                if user_s.status in ("creator", "administrator"):
+                    admin += 1
+            elif dialog.chat.type == "private":
                 user += 1
-
-        await app.send_edit(stats_format.format(app.UserMention(), bot, user, group, channel))
+        end = datetime.now()
+        ms = (end - start).seconds     
+        await app.send_edit(stats_format.format(ms, user, group, supergroup, channel, admin, bot))
     except Exception as e:
         await app.error(e)
