@@ -1,6 +1,8 @@
 
 """ stats plugin """
 
+from datetime import datetime
+
 from pyrogram.types import Message
 from pyrogram.enums import ChatType
 
