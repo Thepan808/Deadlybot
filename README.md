@@ -126,6 +126,8 @@ For now use repl.it to generate string
 
 [![REPL](https://replit.com/badge/github/Team-Deadly/deadlyUserbot)](https://replit.com/@Elric-xD/DeadlyUserbot?v=1)
 
+(https://img.shields.io/badge/Telegram?logo=telegram&logoColor=fff&style=for-the-badge)</a>
+
 ## Deadlyuserbot's Gitbook By Team-Deadly™
 
 <img src="https://telegra.ph/file/16df41fe13ab10d5b7b1b.png" alt="">
