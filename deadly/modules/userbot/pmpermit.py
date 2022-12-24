@@ -43,7 +43,7 @@ async def incomingpm(client: Client, message: Message):
     except BaseException:
         pass
 
-    if await auto_accept(client, message) or message.from_user.is_self:
+    if await auto_accept(client, message)
         message.continue_propagation()
     if message.chat.id != 777000:
         PM_LIMIT = 5
