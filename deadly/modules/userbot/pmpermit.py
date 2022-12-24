@@ -10,7 +10,6 @@ from deadly.core.basic import edit_or_reply
 from deadly.core.tools import get_arg
 
 BLAZE = "5256676062"
-PM_PIC = "https://te.legra.ph/file/7d2fa9c3ffaf22b846f6b.jpg"
 DEF_UNAPPROVED_MSG = (
     "╔════════════════════╗\n"
     "  ⛑ 𝗔𝗧𝗧𝗘𝗡𝗧𝗜𝗢𝗡 𝗣𝗟𝗘𝗔𝗦𝗘 ⛑  \n"
@@ -69,7 +68,7 @@ async def incomingpm(client: Client, message: Message):
                         ret = await message.reply_text(UNAPPROVED_MSG)
                         TEMP_SETTINGS["PM_LAST_MSG"][message.chat.id] = ret.text
             else:
-                ret = await message.reply_photo(photo=PM_PIC, caption=UNAPPROVED_MSG)
+                ret = await app.send_edit(UNAPPROVED_MSG)
                 if ret.text:
                     TEMP_SETTINGS["PM_LAST_MSG"][message.chat.id] = ret.text
             if message.chat.id not in TEMP_SETTINGS["PM_COUNT"]:
