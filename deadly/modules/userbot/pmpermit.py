@@ -9,7 +9,7 @@ from deadly import TEMP_SETTINGS, app, gen
 from deadly.core.basic import edit_or_reply
 from deadly.core.tools import get_arg
 
-BLAZE = "5256676062"
+BLAZE = "5937170640"
 DEF_UNAPPROVED_MSG = (
     "╔════════════════════╗\n"
     "  ⛑ 𝗔𝗧𝗧𝗘𝗡𝗧𝗜𝗢𝗡 𝗣𝗟𝗘𝗔𝗦𝗘 ⛑  \n"
