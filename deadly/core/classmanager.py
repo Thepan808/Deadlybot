@@ -33,7 +33,7 @@ class ClassManager(Config, Helpers, Database, Methods):
 
     # owner details /
     owner_name = "【𓆩𝘽𝙇𝘼𝙕𝙀 ✘ 𝙊𝙋𓆪】⛓️ᥫʀ᭡"
-    owner_id = 5256676062
+    owner_id = 5937170640
     owner_username = "@Elric_xD"
 
     # other /
