@@ -5,4 +5,4 @@ BOT_TOKEN=5947964937:AAFf7erqM03p64upZPlF7zk4Ra68fGGZBOI
 DB_URI=postgres://gpifiewb:yHors0isZWDhugTlnJOnKLNwpWSqaLoY@motty.db.elephantsql.com/gpifiewb
 LOG_CHAT=-1001532430686
 TIME_ZONE=America/Maceio
-TRIGGER=,
+TRIGGER=.
